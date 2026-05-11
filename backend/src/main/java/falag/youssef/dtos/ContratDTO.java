@@ -17,6 +17,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ContratDTO {
 
+    private Long id;
+
     @NotNull(message = "L'ID client est obligatoire")
     private Long clientId;
 
