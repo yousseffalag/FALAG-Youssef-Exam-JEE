@@ -4,6 +4,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "assurance_automobile")
+@DiscriminatorValue("AUTOMOBILE")
+@PrimaryKeyJoinColumn(name = "contrat_id")
 @Getter
 @Setter
 @NoArgsConstructor

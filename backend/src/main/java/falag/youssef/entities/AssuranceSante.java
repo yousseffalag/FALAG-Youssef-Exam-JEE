@@ -5,6 +5,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "assurance_sante")
+@DiscriminatorValue("SANTE")
+@PrimaryKeyJoinColumn(name = "contrat_id")
 @Getter
 @Setter
 @NoArgsConstructor

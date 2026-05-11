@@ -1,4 +1,5 @@
 package falag.youssef.entities;
+
 import falag.youssef.enums.StatutContrat;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "contrat_assurance")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "type_contrat", discriminatorType = DiscriminatorType.STRING)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,8 +20,7 @@ import java.util.List;
 public abstract class ContratAssurance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contrat_seq")
-    @SequenceGenerator(name = "contrat_seq", sequenceName = "contrat_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -43,6 +45,6 @@ public abstract class ContratAssurance {
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Paiement> paiements = new ArrayList<>();
 }

@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "assurance_habitation")
+@DiscriminatorValue("HABITATION")
+@PrimaryKeyJoinColumn(name = "contrat_id")
 @Getter
 @Setter
 @NoArgsConstructor
