@@ -1,0 +1,37 @@
+<section class="login-screen">
+  <form class="login-card" [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+    <div class="login-brand">
+      <i class="bi bi-shield-lock"></i>
+      <div>
+        <h1>Assurance App</h1>
+        <p class="login-subtitle">Connexion sécurisée par JWT</p>
+      </div>
+    </div>
+
+    <div class="stacked-form">
+      <label>
+        <span>Utilisateur</span>
+        <input class="form-control" formControlName="username" autocomplete="username">
+      </label>
+
+      <label>
+        <span>Mot de passe</span>
+        <input class="form-control" type="password" formControlName="password" autocomplete="current-password">
+      </label>
+
+      <div *ngIf="errorMessage" class="alert alert-danger py-2 mb-0">{{ errorMessage }}</div>
+
+      <button class="btn btn-primary w-100" type="submit" [disabled]="loading">
+        <i class="bi bi-box-arrow-in-right me-1"></i>
+        {{ loading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+    </div>
+
+    <div class="demo-accounts">
+      <span>Comptes:</span>
+      <code>admin/1234</code>
+      <code>employe/1234</code>
+      <code>client/1234</code>
+    </div>
+  </form>
+</section>

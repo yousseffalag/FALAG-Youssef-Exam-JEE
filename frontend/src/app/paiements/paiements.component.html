@@ -1,0 +1,65 @@
+<section class="page-shell">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">Encaissements</p>
+      <h1>{{ pageTitle }}</h1>
+    </div>
+  </div>
+
+  <div class="grid-two">
+    <form class="panel stacked-form" *ngIf="!authService.isClient()" [formGroup]="paiementForm" (ngSubmit)="createPaiement()">
+      <div class="panel-title">
+        <h2>Ajouter un paiement</h2>
+      </div>
+      <input class="form-control" type="number" placeholder="ID contrat" formControlName="contratId">
+      <input class="form-control" type="date" formControlName="date">
+      <input class="form-control" type="number" placeholder="Montant" formControlName="montant">
+      <select class="form-select" formControlName="type">
+        <option value="MENSUALITE">Mensualité</option>
+        <option value="PAIEMENT_ANNUEL">Paiement annuel</option>
+        <option value="PAIEMENT_EXCEPTIONNEL">Paiement exceptionnel</option>
+      </select>
+      <button class="btn btn-primary" type="submit" [disabled]="paiementForm.invalid">
+        <i class="bi bi-plus-circle me-1"></i> Ajouter
+      </button>
+      <div *ngIf="errorMessage" class="alert alert-danger py-2 mb-0">{{ errorMessage }}</div>
+    </form>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h2>Liste des paiements</h2>
+        <button class="btn btn-outline-secondary btn-sm" type="button" (click)="loadPaiements()">
+          <i class="bi bi-arrow-clockwise"></i>
+          Rafraîchir
+        </button>
+      </div>
+      <div *ngIf="loading">Chargement...</div>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div class="table-responsive" *ngIf="!loading && paiements.length">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Contrat</th>
+            <th>Date</th>
+            <th>Montant</th>
+            <th>Type</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let paiement of paiements">
+            <td>{{ paiement.id }}</td>
+            <td>{{ paiement.contratId }}</td>
+            <td>{{ paiement.date }}</td>
+            <td>{{ paiement.montant | number:'1.0-2' }}</td>
+            <td>{{ paiement.type }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="!loading && !paiements.length" class="empty-state">
+        <p>Aucun paiement trouvé pour votre compte.</p>
+      </div>
+    </div>
+  </div>
+</section>

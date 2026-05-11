@@ -1,0 +1,19 @@
+<nav class="app-nav" *ngIf="authService.isAuthenticated()">
+  <a class="brand" routerLink="/paiements">
+    <i class="bi bi-shield-check"></i>
+    Assurance App
+  </a>
+
+  <div class="nav-links">
+    <a *ngIf="authService.isEmploye() || authService.isAdmin()" routerLink="/clients" routerLinkActive="active">Clients</a>
+    <a routerLink="/contrats" routerLinkActive="active">Contrats</a>
+    <a routerLink="/paiements" routerLinkActive="active">Paiements</a>
+  </div>
+
+  <div class="nav-user">
+    <span>{{ authService.getCurrentRoleLabel() }}</span>
+    <button class="btn btn-outline-light btn-sm" type="button" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,72 @@
+<section class="page-shell">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">Contrats</p>
+      <h1>{{ pageTitle }}</h1>
+    </div>
+    <button class="btn btn-outline-secondary" type="button" (click)="loadContrats()">
+      <i class="bi bi-arrow-clockwise"></i>
+      Rafraîchir
+    </button>
+  </div>
+
+  <div class="panel">
+    <div *ngIf="loading">Chargement...</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <div class="table-responsive" *ngIf="!loading && contrats.length">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Client</th>
+          <th>Statut</th>
+          <th>Souscription</th>
+          <th>Cotisation</th>
+          <th>Durée</th>
+          <th>Couverture</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let contrat of contrats">
+          <td>{{ contrat.id }}</td>
+          <td>{{ contrat.clientId }}</td>
+          <td><span class="badge bg-secondary">{{ contrat.statut }}</span></td>
+          <td>{{ contrat.dateSouscription }}</td>
+          <td>{{ contrat.montantCotisation | number:'1.0-2' }}</td>
+          <td>{{ contrat.dureeContrat }} mois</td>
+          <td>{{ contrat.tauxCouverture | number:'1.0-0' }}%</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary" type="button" (click)="selectContrat(contrat)">
+              <i class="bi bi-eye"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!loading && !contrats.length" class="empty-state">
+      <p>Aucun contrat trouvé pour cet utilisateur.</p>
+    </div>
+  </div>
+
+  <div *ngIf="selectedContrat" class="panel mt-4">
+    <div class="panel-title">
+      <h2>Détails du contrat</h2>
+      <button class="btn btn-outline-secondary btn-sm" type="button" (click)="selectedContrat = null">
+        Fermer
+      </button>
+    </div>
+
+    <div class="contract-details">
+      <div><strong>ID :</strong> {{ selectedContrat.id }}</div>
+      <div><strong>Client :</strong> {{ selectedContrat.clientId }}</div>
+      <div><strong>Statut :</strong> {{ selectedContrat.statut }}</div>
+      <div><strong>Date de souscription :</strong> {{ selectedContrat.dateSouscription }}</div>
+      <div><strong>Montant :</strong> {{ selectedContrat.montantCotisation | number:'1.0-2' }} DH</div>
+      <div><strong>Durée :</strong> {{ selectedContrat.dureeContrat }} mois</div>
+      <div><strong>Couverture :</strong> {{ selectedContrat.tauxCouverture | number:'1.0-0' }}%</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<section class="page-shell">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">Vue générale</p>
+      <h1>Tableau de bord</h1>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="panel">Chargement...</div>
+
+  <div *ngIf="!loading" class="stats-grid">
+    <article class="panel stat">
+      <i class="bi bi-people"></i>
+      <span>Clients</span>
+      <strong>{{ clientsCount }}</strong>
+    </article>
+    <article class="panel stat">
+      <i class="bi bi-file-earmark-text"></i>
+      <span>Contrats</span>
+      <strong>{{ contratsCount }}</strong>
+    </article>
+    <article class="panel stat">
+      <i class="bi bi-credit-card"></i>
+      <span>Paiements</span>
+      <strong>{{ paiementsCount }}</strong>
+    </article>
+  </div>
+</section>

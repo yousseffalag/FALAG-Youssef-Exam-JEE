@@ -1,0 +1,47 @@
+<section class="page-shell">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">Référentiel</p>
+      <h1>Clients</h1>
+    </div>
+  </div>
+
+  <div class="grid-two">
+    <form class="panel stacked-form" [formGroup]="clientForm" (ngSubmit)="createClient()">
+      <div class="panel-title">
+        <h2>Nouveau client</h2>
+      </div>
+      <input class="form-control" placeholder="Nom" formControlName="nom">
+      <input class="form-control" placeholder="Email" formControlName="email">
+      <button class="btn btn-primary" type="submit" [disabled]="clientForm.invalid">
+        <i class="bi bi-plus-circle me-1"></i> Ajouter
+      </button>
+      <div *ngIf="errorMessage" class="alert alert-danger py-2 mb-0">{{ errorMessage }}</div>
+    </form>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h2>Liste clients</h2>
+        <button class="btn btn-outline-secondary btn-sm" type="button" (click)="loadClients()">
+          <i class="bi bi-arrow-clockwise"></i>
+        </button>
+      </div>
+
+      <div *ngIf="loading">Chargement...</div>
+      <div class="table-responsive" *ngIf="!loading">
+        <table class="table">
+          <thead>
+          <tr><th>ID</th><th>Nom</th><th>Email</th></tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let client of clients">
+            <td>{{ client.id }}</td>
+            <td>{{ client.nom }}</td>
+            <td>{{ client.email }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

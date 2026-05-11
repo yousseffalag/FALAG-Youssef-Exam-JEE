@@ -1,0 +1,244 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --success-color: #16a34a;
+  --danger-color: #dc2626;
+  --warning-color: #f59e0b;
+  --dark-color: #172033;
+  --light-color: #f6f8fb;
+  --border-color: #e2e8f0;
+  --card-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--light-color);
+  color: #1e293b;
+}
+
+main {
+  min-height: calc(100vh - 76px);
+}
+
+.page-shell {
+  width: min(1440px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.page-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 750;
+  color: #0f172a;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.panel-title h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.stacked-form {
+  display: grid;
+  gap: 16px;
+}
+
+.btn {
+  border-radius: 6px;
+  font-weight: 650;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.form-control,
+.form-select {
+  border-color: #cbd5e1;
+  border-radius: 6px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.16);
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table thead th {
+  background-color: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--secondary-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.empty-state {
+  padding: 28px;
+  text-align: center;
+  color: var(--secondary-color);
+  font-style: italic;
+}
+
+.contract-details {
+  display: grid;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.contract-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #334155;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    linear-gradient(120deg, rgba(23, 32, 51, 0.92), rgba(37, 99, 235, 0.78)),
+    url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-card {
+  width: min(100%, 460px);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.28);
+  padding: 32px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.login-brand i {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  color: #fff;
+  background: var(--primary-color);
+  border-radius: 8px;
+  font-size: 1.7rem;
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.login-subtitle {
+  color: var(--secondary-color);
+  margin-bottom: 24px;
+}
+
+.demo-accounts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--secondary-color);
+  font-size: 0.85rem;
+}
+
+.demo-accounts code {
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+@media (max-width: 768px) {
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-shell {
+    width: min(100% - 20px, 1440px);
+    padding: 20px 0;
+  }
+
+  .panel,
+  .login-card {
+    padding: 18px;
+  }
+
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+}
